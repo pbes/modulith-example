@@ -1,0 +1,19 @@
+@startuml
+
+package "Application" {
+    component "Modul 1" as m1 {
+        portin API as m1_api
+        component Internal as m1_internal
+    }
+
+    component "Modul 2" as m2 {
+        portin "M2 API" as m2_api
+        component Internal as m2_internal
+    }
+}
+
+m1_internal -r-> m2_api #green : OK
+m1_internal ..> m2_internal #red : invalid
+m2_internal .d.> m1_api #red : invalid
+
+@enduml
